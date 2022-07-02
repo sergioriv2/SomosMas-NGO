@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon run ./bin/www",
+    "dev": "nodemon app",
     "test:activities": "jest test/activities.test.js --verbose --detectOpenHandles",
     "test:auth": "jest test/auth.test.js --verbose --detectOpenHandles",
     "test:contacts": "jest test/contacts.test.js --verbose --detectOpenHandles",
