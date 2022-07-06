@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { ScrollToTop } from "react-router-scroll-to-top";
 import { AnimatePresence } from "framer-motion";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 /* views */
 import HomePage from "./views/HomePage/HomePage";

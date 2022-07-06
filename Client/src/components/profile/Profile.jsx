@@ -8,17 +8,9 @@ export default function Profile() {
   const [editView, setEditView] = useState(false);
   const user = useSelector(({ user }) => user.entity);
 
-  if (editView === false) {
-    return (
-      <div>
-        <ProfileView setEditView={setEditView} userData={user} />
-      </div>
-    );
+  if (!editView) {
+    return <ProfileView setEditView={setEditView} userData={user} />;
   }
 
-  return (
-    <div>
-      <ProfileEdit setEditView={setEditView} userData={user} />
-    </div>
-  );
+  return <ProfileEdit setEditView={setEditView} userData={user} />;
 }
