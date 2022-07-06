@@ -23,7 +23,7 @@
 
 .newCard_container {
   background-color: var(--new-card-background);
- /*  //height: 250px !important; */
+  /*  //height: 250px !important; */
 }
 
 @media only screen and (min-width: 768px) {

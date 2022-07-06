@@ -51,10 +51,6 @@ const getPublic = async (req, res) => {
           text: "Contacto",
           route: "/contact",
         },
-        {
-          text: "Contribuye",
-          route: "/contribute",
-        },
       ],
       buttons: [
         {

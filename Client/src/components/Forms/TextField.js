@@ -29,7 +29,9 @@ const TextField = ({
           accept={accept}
           placeholder={placeholder}
         ></Form.Control>
-        {meta.touched && meta.error ? <h6>{meta.error}</h6> : null}
+        {meta.touched && meta.error ? (
+          <h6 className="mt-2">{meta.error}</h6>
+        ) : null}
       </Col>
     </Form.Group>
   );

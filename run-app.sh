@@ -1,0 +1,1 @@
+bash -c 'npm run dev --prefix ./Server & npm start --prefix Client & wait'

@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { ScrollToTop } from "react-router-scroll-to-top";
 import { AnimatePresence } from "framer-motion";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 /* views */
@@ -50,7 +49,6 @@ function App() {
     <AdminProvider>
       <AlertProvider>
         <AnimatePresence>
-          {/* <ScrollToTop> */}
           <Routes location={location} key={location.pathname}>
             <Route element={<HomePageLayout />}>
               <Route index element={<HomePage />} />
@@ -93,7 +91,6 @@ function App() {
               </Route>
             </Route>
           </Routes>
-          {/* </ScrollToTop> */}
         </AnimatePresence>
       </AlertProvider>
     </AdminProvider>

@@ -4,9 +4,12 @@ import Header from "../../components/Header/";
 import useFetch from "../../hooks/useFetch";
 import { motion } from "framer-motion";
 import { ScrollToTop } from "react-router-scroll-to-top";
+import { useEffect } from "react";
 
 const HomePageLayout = () => {
   const { data: publicInfo } = useFetch(process.env.REACT_APP_PUBLIC_ENDPOINT);
+
+  useEffect(() => {}, []);
 
   return (
     <>

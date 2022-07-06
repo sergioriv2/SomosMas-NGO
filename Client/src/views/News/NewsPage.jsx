@@ -1,13 +1,11 @@
 import React from "react";
 import Loader from "../../components/Loader/Loader";
 import NewsSlider from "../../components/Slider/NewsSlider";
-import Styles from "./newsPage.module.css";
 import useFetch from "../../hooks/useFetch";
-
+import { Col, Container, Row } from "react-bootstrap";
 
 const NewsPage = () => {
-
-  let { data: newsInfo, loading } = useFetch(
+  const { data: newsInfo, loading } = useFetch(
     `${process.env.REACT_APP_NEWS_ENDPOINT}`
   );
 
@@ -16,10 +14,16 @@ const NewsPage = () => {
   }
 
   return (
-    <main className={Styles.main}>
-      <h1 className={Styles.title}>Novedades</h1>
-      <NewsSlider newsData={newsInfo.results}/>
-    </main>
+    <Container fluid>
+      <Row className="my-5">
+        <Col>
+          <h1 className="text-center">Novedades</h1>
+        </Col>
+      </Row>
+      <Row>
+        <NewsSlider newsData={newsInfo.results} />
+      </Row>
+    </Container>
   );
 };
 

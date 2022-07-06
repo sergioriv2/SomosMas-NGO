@@ -1,46 +1,89 @@
 import React from "react";
 
-import {Container, Row, Col, Image} from 'react-bootstrap'
-import style from "./css/Profile.module.css"
+import { Container, Row, Col, Image } from "react-bootstrap";
 
-import foto from "../register/imagen/manos10.jpg"
 import Button from "../Button";
+import PlaceholderImage from "../../images/backoffice/user.png";
 
-
-export default function  ProfileView({userData , setEditView }){
-    return(
-        <div>
-            <Container fluid >
-            <Row style={{minHeight: "810px"}}>
-                <Col xxl={6} className="d-flex flex-column justify-content-center">
+export default function ProfileView({ userData, setEditView }) {
+  return (
+    <Container
+      fluid
+      style={{ minHeight: "100%" }}
+      className="d-flex flex-column"
+    >
+      <Row className="text-center mt-5">
+        <Col>
+          <h1>Mi Datos Personales</h1>
+        </Col>
+      </Row>
+      <Row className="m-auto" style={{ minHeight: "500px" }}>
+        <Col>
+          <Container>
+            <Row>
+              <Col>
                 <Container>
-                    <Row className="my-5">
-                        <Col xxl={7} className="register-wrapper">
-                        <h3>Mi perfil</h3>
-                        <Container className="my-3" fluid>
-                            <Row style={{fontWeight: "bold"}}>
-                                <Col><p>Nombre</p></Col>
-                                <Col><p>Apellido</p></Col>
-                                <Col><p>Email</p></Col>
-                            </Row>
-                            <Row>
-                                <Col><p>{userData.firstName}</p></Col>
-                                <Col><p>{userData.lastName}</p></Col>
-                                <Col><p>{userData.email}</p></Col>
-                            </Row>
-                        </Container>
-
-                        <Button callbackClick={() => setEditView(true)} styles="secondary" >Editar</Button>
-                        <Button styles="primary" >Eliminar</Button> 
-                        </Col>
-                    </Row>
+                  <Row>
+                    <Col className="d-flex justify-content-center mb-2">
+                      <Image
+                        roundedCircle
+                        src={userData.img || PlaceholderImage}
+                        alt="user"
+                        style={{
+                          width: "120px",
+                        }}
+                      ></Image>
+                    </Col>
+                  </Row>
                 </Container>
-                </Col>
-                <Col xxl={6}>
-                <Image className={style.image} src={foto}></Image>
-                </Col>
+              </Col>
             </Row>
-        </Container>
-        </div>
-    )
+            <Row className="my-3">
+              <Col className="mb-3" xs={12}>
+                <p className="mb-2">
+                  <strong>Nombre</strong>
+                </p>
+                <p
+                  style={{ borderBottom: "1px solid black" }}
+                  className="pb-1 m-0"
+                >
+                  {userData.firstName}
+                </p>
+              </Col>
+              <Col className="mb-3" xs={12}>
+                <p className="mb-2">
+                  <strong>Apellido</strong>
+                </p>
+                <p
+                  style={{ borderBottom: "1px solid black" }}
+                  className="pb-1 m-0"
+                >
+                  {userData.lastName}
+                </p>
+              </Col>
+              <Col className="mb-3" xs={12}>
+                <p className="mb-2">
+                  <strong>Email</strong>
+                </p>
+                <p style={{ color: "gray" }} className="pb-1 m-0">
+                  {userData.email}
+                </p>
+              </Col>
+            </Row>
+            <Row>
+              <Col className="d-flex justify-content-between">
+                <Button
+                  callbackClick={() => setEditView(true)}
+                  styles="secondary px-4"
+                >
+                  Editar
+                </Button>
+                <Button styles="primary px-4">Eliminar</Button>
+              </Col>
+            </Row>
+          </Container>
+        </Col>
+      </Row>
+    </Container>
+  );
 }

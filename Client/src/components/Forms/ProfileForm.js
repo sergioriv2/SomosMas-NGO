@@ -1,4 +1,5 @@
 import * as Bootstrap from "react-bootstrap";
+import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import TextField from "../Forms/TextField";
 import Button from "../Button";
@@ -17,6 +18,19 @@ const ProfileForm = ({ setEditView, userData, formMethod }) => {
         roleId: userData.roleId,
       }}
       onSubmit={(values) => formMethod(values)}
+      validationSchema={Yup.object({
+        firstName: Yup.string()
+          .required("Este campo es obligatorio.")
+          .matches(/^[aA-zZ\s]+$/, "Solo se permiten letras.")
+          .min(4, "El nombre tiene que contener al menos 4 caracteres."),
+        lastName: Yup.string()
+          .required("Este campo es obligatorio.")
+          .matches(/^[aA-zZ\s]+$/, "Solo se permiten letras.")
+          .min(4, "El apellido tiene que contener al menos 4 caracteres."),
+        email: Yup.string()
+          .required("Este campo es obligatorio.")
+          .email("Por favor, ingrese un email válido"),
+      })}
     >
       <Bootstrap.Form as={Form}>
         <TextField name="firstName" label="Nombre"></TextField>

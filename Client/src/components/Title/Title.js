@@ -22,6 +22,7 @@ const Title = (props) => {
             className="welcomeImage"
             src={image}
             alt="SomosMasWelcome"
+            loading="lazy"
           ></Image>
         </Col>
       </Row>
