@@ -19,11 +19,12 @@
   border-radius: 20px;
   line-height: 22px;
   max-width: 250px;
+  min-width: 250px;
 }
 
 .newCard_container {
   background-color: var(--new-card-background);
- /*  //height: 250px !important; */
+  /*  //height: 250px !important; */
 }
 
 @media only screen and (min-width: 768px) {

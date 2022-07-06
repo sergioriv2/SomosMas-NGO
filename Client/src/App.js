@@ -50,7 +50,6 @@ function App() {
     <AdminProvider>
       <AlertProvider>
         <AnimatePresence>
-          {/* <ScrollToTop> */}
           <Routes location={location} key={location.pathname}>
             <Route element={<HomePageLayout />}>
               <Route index element={<HomePage />} />
@@ -93,7 +92,6 @@ function App() {
               </Route>
             </Route>
           </Routes>
-          {/* </ScrollToTop> */}
         </AnimatePresence>
       </AlertProvider>
     </AdminProvider>

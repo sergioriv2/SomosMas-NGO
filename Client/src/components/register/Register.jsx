@@ -5,9 +5,6 @@ import { setLoginFulfilled } from "../../features/actions/loginActions";
 import { Formik } from "formik";
 import { Container, Row, Col, Image } from "react-bootstrap";
 
-import foto from "../register/imagen/Foto3.jpg";
-import "../register/css/Register.css";
-
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -204,9 +201,6 @@ export default function Register() {
               </Col>
             </Row>
           </Container>
-        </Col>
-        <Col xs={12} sm={6} style={{ padding: "0" }}>
-          <Image src={foto} className="register-image"></Image>
         </Col>
       </Row>
     </Container>

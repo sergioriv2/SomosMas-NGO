@@ -1,55 +1,60 @@
 import React from "react";
 import "./newsSlide.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ButtonComponent from "../../components/Button";
 
 //Librería
 import Carousel from "react-bootstrap/Carousel";
+import { Col, Container, Image, Row } from "react-bootstrap";
 
 const NewsSlider = ({ newsData }) => {
   const navigate = useNavigate();
-
-  let slides;
-  if (Array.isArray(newsData) && newsData.length >= 1) {
-    slides = newsData.map((item, i) => {
-      return (
-        <Carousel.Item key={i} interval={15000} className="carouselItemNew">
-          <img src={item.image} alt={item.name} />
-          <Carousel.Caption>
-            <div className="content-container">
-              <h2 className="newTitle mb-2">{item.name}</h2>
-              <div
-                className="newContent mb-5"
-                dangerouslySetInnerHTML={{ __html: item.content }}
-              ></div>
-              <ButtonComponent
-                className="btn-news"
-                callbackClick={() => navigate("/news/" + item.id)}
-              >
-                Ver más
-              </ButtonComponent>
-            </div>
-          </Carousel.Caption>
-        </Carousel.Item>
-      );
-    });
-  } else {
-    slides = [];
-  }
+  if (!Array.isArray(newsData) || !newsData.length >= 1)
+    return <p>Loading...</p>;
 
   return (
-    <>
-      {slides.length > 0 ? (
-        <Carousel
-          style={{ display: "block", width: "100%" }}
-          className="carouselNew"
-        >
-          {slides}
-        </Carousel>
-      ) : (
-        <Navigate to="/home" />
-      )}
-    </>
+    <Carousel
+      variant="dark"
+      style={{ display: "block", width: "100%" }}
+      className="carouselNew"
+    >
+      {newsData.map((item) => {
+        const splittedContent =
+          item.content.split("</p>")[0].split(".")[0] + "...</p>";
+        return (
+          <Carousel.Item className="carousel-item" key={item.id}>
+            <Image src={item.image} alt={item.name} />
+            <Carousel.Caption>
+              <Container>
+                <Row>
+                  <Col>
+                    <h3 className="mb-2 carousel-item__title">{item.name}</h3>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col
+                    dangerouslySetInnerHTML={{
+                      __html: splittedContent,
+                    }}
+                    className="text-left content-container"
+                  ></Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <ButtonComponent
+                      className="btn-news"
+                      callbackClick={() => navigate("/news/" + item.id)}
+                    >
+                      Ver más
+                    </ButtonComponent>
+                  </Col>
+                </Row>
+              </Container>
+            </Carousel.Caption>
+          </Carousel.Item>
+        );
+      })}
+    </Carousel>
   );
 };
 export default NewsSlider;
